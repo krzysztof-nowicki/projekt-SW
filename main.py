@@ -4,7 +4,7 @@ import cv2 as cv
 str = 'img_015.jpg'
 path = 'train/' + str
 
-
+#comm
 
 img = cv.imread(path)
 img = cv.resize(img,None, fx=0.25, fy=0.25)
