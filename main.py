@@ -17,8 +17,9 @@ img = cv.pyrMeanShiftFiltering(img, 10, 21)
 # img = cv.medianBlur(img, 5)
 img = img[:,:,0]
 
-img = cv.inRange(img, 0, 100)
-
+# img = cv.inRange(img, 0, 100)
+img = cv.adaptiveThreshold(img,  155,
+	cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY_INV, 21, 10)
 img2 = cv.imread(path)
 img2 = cv.resize(img2,None, fx=0.25, fy=0.25)
 img2 = cv.pyrMeanShiftFiltering(img2, 10, 21)
@@ -27,6 +28,7 @@ img2 = cv.pyrMeanShiftFiltering(img2, 10, 21)
 img2 = img2[:,:,2]
 
 # img2 = 255-img
+
 img2 = cv.inRange(img2, 0, 100)
 
 img3 = cv.imread(path)
@@ -41,8 +43,10 @@ img3 = cv.pyrMeanShiftFiltering(img3, 10, 21)
 img3 = img3[:,:,0]
 
 img3 = 255-img3
+img3 = cv.adaptiveThreshold(img3,  155,
+	cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY_INV, 21, 10)
 # cv.imshow('window15', img3)
-img3 = cv.inRange(img3, 0, 95)
+# img3 = cv.inRange(img3, 0, 95)
 # cv.imshow('window11', img2)
 img4 = cv.bitwise_or(img, img2)
 img4 = cv.bitwise_or(img4, img3)
@@ -105,6 +109,7 @@ img3 = cv.morphologyEx(img3, cv.MORPH_CLOSE, kernel)
 # cv.waitKey()
 
 contours, hierarchy = cv.findContours(img4, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
 print(len(contours))
 cv.drawContours(draw, contours, -1, (0,255,0), 3)
 cv.imshow('window', draw)
