@@ -5,11 +5,11 @@ import cv2 as cv
 
 def perform_processing(image: np.ndarray) -> List[int]:
     print(f'image.shape: {image.shape}')
-    path_1 = 'dane/shape1.png'
-    path_2 = 'dane/shape2.png'
-    path_3 = 'dane/shape3.png'
-    path_4 = 'dane/shape4.png'
-    path_5 = 'dane/shape5.png'
+    path_1 = 'data/shape1.png'
+    path_2 = 'data/shape2.png'
+    path_3 = 'data/shape3.png'
+    path_4 = 'data/shape4.png'
+    path_5 = 'data/shape5.png'
     shapeimg1 = cv.imread(path_1, 0)
     testimg1 = cv.imread(path_1)
     shapeimg1 = cv.GaussianBlur(shapeimg1, (3, 3), 0)
@@ -180,11 +180,11 @@ def perform_processing(image: np.ndarray) -> List[int]:
                     white_cnt += 1
                     print("zolty")
 
-    # cv.drawContours(draw, shape1_cont, -1, (0, 255, 0), -1)
-    # cv.drawContours(draw, shape2_cont, -1, (0, 0, 255), -1)
-    # cv.drawContours(draw, shape3_cont, -1, (255, 0, 0), -1)
-    # cv.drawContours(draw, shape4_cont, -1, (0, 125, 105), -1)
-    # cv.drawContours(draw, shape5_cont, -1, (165, 0, 155), -1)
-    # cv.imshow('window', draw)
-    # cv.waitKey()
+    cv.drawContours(draw, shape1_cont, -1, (0, 255, 0), -1)
+    cv.drawContours(draw, shape2_cont, -1, (0, 0, 255), -1)
+    cv.drawContours(draw, shape3_cont, -1, (255, 0, 0), -1)
+    cv.drawContours(draw, shape4_cont, -1, (0, 125, 105), -1)
+    cv.drawContours(draw, shape5_cont, -1, (165, 0, 155), -1)
+    cv.imshow('window', draw)
+    cv.waitKey()
     return [shape1_count, shape2_count, shape3_count, shape4_count, shape5_count, red_cnt, green_cnt, blue_cnt, white_cnt, yellow_cnt, mixed_cnt]
